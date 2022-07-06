@@ -17,6 +17,8 @@ Tests how much faster it is to make https get requests with python when doing as
     get https://www.linkedin.com request response saved in sync-requests/1657132372.983913_aHR0cHM6Ly93d3cubGlua2VkaW4uY29t
     get https://www.apple.com request response saved in sync-requests/1657132373.471808_aHR0cHM6Ly93d3cuYXBwbGUuY29t
     For 10 sync requests it took 7.031887769699097
+
+
     making asynchronous requests...
     get https://www.apple.com request response saved in async-requests/1657132373.614781_aHR0cHM6Ly93d3cuYXBwbGUuY29t
     get https://www.facebook.com request response saved in async-requests/1657132373.652744_aHR0cHM6Ly93d3cuZmFjZWJvb2suY29t
@@ -28,8 +30,8 @@ Tests how much faster it is to make https get requests with python when doing as
     get https://www.twitter.com request response saved in async-requests/1657132374.2042198_aHR0cHM6Ly93d3cudHdpdHRlci5jb20=
     get https://www.plus.google.com request response saved in async-requests/1657132374.493839_aHR0cHM6Ly93d3cucGx1cy5nb29nbGUuY29t
     get https://www.gmail.com request response saved in async-requests/1657132374.98636_aHR0cHM6Ly93d3cuZ21haWwuY29t
-    
-    
+
+
     [{'https://www.google.com': 200}, {'https://www.plus.google.com': 200}, {'https://www.youtube.com': 200}, {'https://www.facebook.com': 200}, {'https://www.instagram.com': 200}, {'https://www.twitter.com': 200}, {'https://www.gmail.com': 200}, {'https://www.ebay.com': 200}, {'https://www.linkedin.com': 200}, {'https://www.apple.com': 200}]
     For 10 async requests it took 1.5158741474151611
 ```
