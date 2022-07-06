@@ -28,4 +28,4 @@ Tests how much faster it is to make https get requests with python when doing as
     get https://www.twitter.com request response saved in async-requests/1657132374.2042198_aHR0cHM6Ly93d3cudHdpdHRlci5jb20=
     get https://www.plus.google.com request response saved in async-requests/1657132374.493839_aHR0cHM6Ly93d3cucGx1cy5nb29nbGUuY29t
     get https://www.gmail.com request response saved in async-requests/1657132374.98636_aHR0cHM6Ly93d3cuZ21haWwuY29t
-    ```
+```
