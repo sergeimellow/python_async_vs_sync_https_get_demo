@@ -1,5 +1,12 @@
 # python async vs sync https get demo
 Tests how much faster it is to make https get requests with python when doing async vs sync requests
+
+### The take away:
+
+For 10 requests it was 4.639 times faster. With the 10 sync requests taking 7.032 seconds and the async requests
+taking 1.516 seconds. This should be re-run with a much larger set of URLs to get a better estimate of exactly how much faster
+async is vs sync get requests.
+
 ### example results:
 ```
     $ python3 make_async_requests.py 10_urls.csv

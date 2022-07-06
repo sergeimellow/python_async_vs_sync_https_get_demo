@@ -48,7 +48,7 @@ def urls_csv_to_tuples(csv_file_name):
     
     return urls
 
-# creates a parser and parses all args
+# creates a parser and parses all args (just a csv file for now)
 def get_command_line_args():
     parser = argparse.ArgumentParser(description='make some requests.')
     parser.add_argument('csv', type=str, help='path to 1 column csv with list of URLs to download')
@@ -63,9 +63,7 @@ These methods are used to perform async vs sync python https get requests
 """
 
 
-"""
-runs a bunch of asynchronous get requests
-"""
+# runs a bunch of asynchronous get requests and prints status code of each result at the end
 async def make_async_requests(urls):
     async with aiohttp.ClientSession() as session:
         tasks = []
@@ -77,9 +75,8 @@ async def make_async_requests(urls):
         print(url_by_status_code)
 
 
-"""
-makes a get request and saves html response to file named async-requests/{EPOCH_TIME}_{base64encodedURL}
-"""
+
+# makes a get request and saves html response to file named async-requests/{EPOCH_TIME}_{base64encodedURL}
 async def get_html_and_save_response_to_file(session, url):
     async with session.get(url) as resp:
         code = resp.status
@@ -93,6 +90,8 @@ async def get_html_and_save_response_to_file(session, url):
         return {url: code}
 
 
+# similiar to get_html_and_save_response_to_file but uses urlopen and no async.
+# The files are saved to a "sync-request/" directory with the same file name format.
 def make_sync_requests(urls):
     for url in urls:
         response = urlopen(url)
@@ -106,10 +105,19 @@ def make_sync_requests(urls):
         f.close()
         print("get " + url + " request response saved in " + sync_requests_path + file_name)
 
+"""
 
-# compares making N get requests and saving html reponses in files synchronously vs asynchronously
-# HOW TO RUN:
-# python3 make_async_requests.py top_10_urls.csv
+compares making N https get requests synchronously vs asynchronously and saving html reponses in files for both.
+
+Example run:
+$ python3 make_async_requests.py 10_urls.csv
+
+make_async_requests.py takes in one argument that is expected to be a path to a csv file. The code only reads
+the first column of the csv file and stores it in a tuple. This tuple is expected to contain all the URLs
+that are being used for the test. This tuple is used for making both the sync and async get requests. Responses
+for both the sync and async requests are stored in sync-request/ and async-request/ directories respectively.
+
+"""
 if __name__ == '__main__':
     # setup via HELPER methods
     make_async_and_sync_directories()
@@ -170,4 +178,11 @@ if __name__ == '__main__':
 
     [{'https://www.google.com': 200}, {'https://www.plus.google.com': 200}, {'https://www.youtube.com': 200}, {'https://www.facebook.com': 200}, {'https://www.instagram.com': 200}, {'https://www.twitter.com': 200}, {'https://www.gmail.com': 200}, {'https://www.ebay.com': 200}, {'https://www.linkedin.com': 200}, {'https://www.apple.com': 200}]
     For 10 async requests it took 1.5158741474151611
+
+    The take away:
+
+    This means for 10 requests it was 4.639 times faster. With the 10 sync requests taking 7.032 seconds and the async requests
+    taking 1.516 seconds. This should be re-run with a much larger set of URLs to get a better estimate of exactly how much faster
+    async is vs sync get requests.
+
     """
