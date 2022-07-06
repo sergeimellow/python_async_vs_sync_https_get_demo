@@ -28,4 +28,8 @@ Tests how much faster it is to make https get requests with python when doing as
     get https://www.twitter.com request response saved in async-requests/1657132374.2042198_aHR0cHM6Ly93d3cudHdpdHRlci5jb20=
     get https://www.plus.google.com request response saved in async-requests/1657132374.493839_aHR0cHM6Ly93d3cucGx1cy5nb29nbGUuY29t
     get https://www.gmail.com request response saved in async-requests/1657132374.98636_aHR0cHM6Ly93d3cuZ21haWwuY29t
+    
+    
+    [{'https://www.google.com': 200}, {'https://www.plus.google.com': 200}, {'https://www.youtube.com': 200}, {'https://www.facebook.com': 200}, {'https://www.instagram.com': 200}, {'https://www.twitter.com': 200}, {'https://www.gmail.com': 200}, {'https://www.ebay.com': 200}, {'https://www.linkedin.com': 200}, {'https://www.apple.com': 200}]
+    For 10 async requests it took 1.5158741474151611
 ```
